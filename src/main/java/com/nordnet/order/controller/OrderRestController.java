@@ -46,7 +46,7 @@ public class OrderRestController {
     }
 
     @GetMapping("/summary")
-    public ResponseEntity<Summary> fetchSummary(@RequestParam String orderSide, @RequestParam String ticker, @RequestParam LocalDate date) {
+    public ResponseEntity<Summary> fetchSummary(@RequestParam OrderSide orderSide, @RequestParam String ticker, @RequestParam LocalDate date) {
         return ResponseEntity.ok(orderBookService.fetchSummary(orderSide, ticker, date));
     }
 

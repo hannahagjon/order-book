@@ -44,14 +44,14 @@ public class OrderBookServiceUnitTest {
 
     @Test
     void createsASummaryWhenOrdersAreAvailable(){
-        Summary summary = service.fetchSummary("SELL", "GME", LocalDate.now());
+        Summary summary = service.fetchSummary(OrderSide.SELL, "GME", LocalDate.now());
         Assertions.assertNotNull(summary);
         Assertions.assertTrue(summary.getAmountOfOrders() > 0);
     }
 
     @Test
     void returnsAnEmptySummaryWhenNoOrdersAreAvailable(){
-        Summary summary = service.fetchSummary("SELL", "TSLA", LocalDate.now());
+        Summary summary = service.fetchSummary(OrderSide.SELL, "TSLA", LocalDate.now());
         Assertions.assertNotNull(summary);
         Assertions.assertEquals(0, summary.getAmountOfOrders());
         Assertions.assertNull(summary.getAveragePrice());

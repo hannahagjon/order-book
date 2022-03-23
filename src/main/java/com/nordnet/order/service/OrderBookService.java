@@ -40,9 +40,9 @@ public class OrderBookService {
         }
     }
 
-    public Summary fetchSummary(String orderSide, String ticker, LocalDate date) {
+    public Summary fetchSummary(OrderSide orderSide, String ticker, LocalDate date) {
         LOGGER.info("Fetching summary for orderside: {}, ticker: {} and date: {}", orderSide, ticker, date);
-        List<Order> ordersByTicker = book.getOrdersByTicker(OrderSide.valueOf(orderSide), ticker, date);
+        List<Order> ordersByTicker = book.getOrdersByTicker(orderSide, ticker, date);
         return new Summary(ordersByTicker);
     }
 
